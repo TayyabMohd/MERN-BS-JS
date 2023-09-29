@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Detailed Form</title>
+    <style>
+      #main_content {
+        background-color: #b5e016;
+        text-align: center;
+        padding: 10px;
+        border-radius: 10px;
+        background: linear-gradient(
+          to bottom,
+          yellow,
+          pink,
+          rgb(194, 112, 194)
+        );
+      }
+      .details {
+        /* border: 1px solid black;
+        background-color: #a0b363; */
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: 10px;
+      }
+      .error {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <form name="myform" onsubmit="return validation()">
+      <div id="main_content">
+        <div>
+          <h2>Your Details</h2>
+          <div class="details">
+            <label for="fname">First Name</label>
+            <input type="text" id="fname" name="fname" />
+            <span id="fnameerr" class="error"></span>
+          </div>
+          <div class="details">
+            <label for="lname">Last Name</label>
+            <input type="text" id="lname" name="lname" />
+            <span id="lnameerr" class="error"></span>
+          </div>
+          <div class="details">
+            <label for="email">E-mail</label>
+            <input type="email" id="email" name="email" />
+            <span id="emailerr" class="error"></span>
+          </div>
+          <div class="details">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" />
+            <span id="passworderr" class="error"></span>
+          </div>
+          <div class="details">
+            <label for="repassword">Re-enter Password</label>
+            <input type="password" id="repassword" name="repassword" />
+            <span id="repassworderr" class="error"></span>
+          </div>
+          <div class="details">
+            <label for="gender">Gender</label>
+            <input type="radio" id="male" name="gender" value="Male" />
+            <label for="male">Male</label>
+            <input type="radio" id="female" name="gender" value="Female" />
+            <label for="female">Female</label>
+            <span id="gendererr" class="error"></span>
+          </div>
+          <div class="details">
+            <label for="age">Age</label>
+            <input type="text" id="age" name="age" />
+            <span id="ageerr" class="error"></span>
+          </div>
+          <div class="details">
+            <label for="phone">Phone Number</label>
+            <input type="text" id="phone" name="phone" />
+            <span id="phoneerr" class="error"></span>
+          </div>
+          <div class="details">
+            <label for="address">Address</label>
+            <textarea id="address" name="address" rows="4"></textarea>
+            <span id="addresserr" class="error"></span>
+          </div>
+          <div class="details">
+            <label for="state">State</label>
+            <input type="text" id="state" name="state" />
+            <span id="stateerr" class="error"></span>
+          </div>
+          <div class="details">
+            <label for="country">Country</label>
+            <select id="country" name="country">
+              <option value="">Select Country</option>
+              <option value="USA">USA</option>
+              <option value="Canada">Canada</option>
+            </select>
+            <span id="countryerr" class="error"></span>
+          </div>
+          <div class="details">
+            <label for="languages">Languages Known</label>
+            <input
+              type="checkbox"
+              id="english"
+              name="languages"
+              value="English"
+            />
+            <label for="english">English</label>
+            <input
+              type="checkbox"
+              id="kannada"
+              name="languages"
+              value="Kannada"
+            />
+            <label for="kannada">Kannada</label>
+            <input type="checkbox" id="hindi" name="languages" value="Hindi" />
+            <label for="hindi">Hindi</label>
+            <input
+              type="checkbox"
+              id="telugu"
+              name="languages"
+              value="Telugu"
+            />
+            <label for="telugu">Telugu</label>
+            <span id="languageserr" class="error"></span>
+          </div>
+          <div class="details" style="text-align: left; padding-left: 450px">
+            <input type="checkbox" id="declaration" name="declaration" />
+            <label for="declaration"
+              >I declare all the given details are true</label
+            >
+            <span id="declarationerr" class="error"></span>
+          </div>
+        </div>
+        <div style="text-align: right; padding-right: 450px">
+          <h3>Login to <a href="#">Ethnus</a>Website</h3>
+        </div>
+        <button type="submit">Submit</button>
+      </div>
+    </form>
+    <script>
+      function validation() {
+        // Reset error messages
+        clearErrors();
+
+        const fname = document.forms["myform"]["fname"].value;
+        const lname = document.forms["myform"]["lname"].value;
+        const email = document.forms["myform"]["email"].value;
+        const password = document.forms["myform"]["password"].value;
+        const age = document.forms["myform"]["age"].value;
+        const phone = document.forms["myform"]["phone"].value;
+        const address = document.forms["myform"]["address"].value;
+        const state = document.forms["myform"]["state"].value;
+
+        let isValid = true;
+
+        if (fname === "") {
+          document.getElementById("fnameerr").textContent = "Poor";
+          isValid = false;
+        }
+
+        if (lname === "") {
+          document.getElementById("lnameerr").textContent = "Poor";
+          isValid = false;
+        }
+
+        if (!isValidEmail(email)) {
+          document.getElementById("emailerr").textContent = "Poor";
+          isValid = false;
+        }
+
+        if (password === "") {
+          document.getElementById("passworderr").textContent = "Poor";
+          isValid = false;
+        }
+
+        if (age === "" || isNaN(age)) {
+          document.getElementById("ageerr").textContent = "Poor";
+          isValid = false;
+        }
+
+        if (phone === "") {
+          document.getElementById("phoneerr").textContent = "Poor";
+          isValid = false;
+        }
+
+        if (address === "") {
+          document.getElementById("addresserr").textContent = "Poor";
+          isValid = false;
+        }
+
+        if (state === "") {
+          document.getElementById("stateerr").textContent = "Poor";
+          isValid = false;
+        }
+
+        return isValid;
+      }
+
+      function isValidEmail(email) {
+        const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+        return emailPattern.test(email);
+      }
+
+      function clearErrors() {
+        const errorElements = document.querySelectorAll(".error");
+        for (let i = 0; i < errorElements.length; i++) {
+          errorElements[i].textContent = "";
+        }
+      }
+    </script>
+  </body>
+</html>

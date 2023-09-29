@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <label for="fn">1st Number: </label>
+    <input type="text" id="fn" name="fn" /><br />
+    <br /><label for="tn">2nd Number: </label>
+    <input type="text" id="tn" name="tn" /><br /><br />
+    <input type="submit" id="mul" value="Multiply" onclick="Multiply()" />
+    <input type="submit" id="div" value="Division" onclick="Divide()" /><br />
+    The Result Is:<br />
+    <span id="result"></span><br />
+    <script>
+      function Multiply() {
+        var fn = Number(document.getElementById("fn").value);
+        var tn = Number(document.getElementById("tn").value);
+        var res = fn * tn;
+        document.getElementById("result").textContent = res;
+      }
+      function Divide() {
+        var fn = Number(document.getElementById("fn").value);
+        var tn = Number(document.getElementById("tn").value);
+        var res = fn / tn;
+        document.getElementById("result").textContent = res;
+      }
+    </script>
+  </body>
+</html>

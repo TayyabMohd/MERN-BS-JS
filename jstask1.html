@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function reverse(n) {
+        var num = 0;
+        while (n > 0) {
+          var r = n % 10;
+          num = r + 10 * num;
+          n = Math.floor(n / 10);
+        }
+        return num;
+      }
+      var out = reverse(32243);
+      console.log(out);
+    </script>
+  </body>
+</html>

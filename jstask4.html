@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input
+      type="button"
+      id="sdate"
+      name="sdate"
+      value="Show Date"
+      onclick="ShowDate()"
+    /><br />
+    <span id="sd"></span><br /><br />
+    <input
+      type="button"
+      id="stime"
+      name="stime"
+      value="Show Time"
+      onclick="ShowTime()"
+    /><br />
+    <span id="st"></span>
+    <script>
+      function ShowDate() {
+        var currentDate = new Date();
+        var dateElement = document.getElementById("sd");
+        dateElement.textContent = "Current Date: " + currentDate.toDateString();
+      }
+
+      function ShowTime() {
+        var currentTime = new Date();
+        var timeElement = document.getElementById("st");
+        timeElement.textContent =
+          "Current Time: " + currentTime.toLocaleTimeString();
+      }
+    </script>
+  </body>
+</html>
